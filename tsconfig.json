@@ -28,7 +28,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "next.config.js"
+    "next.config.js",
+    ".next/types/app/companies/[id]/page.tsx",
+    ".next/types/app/companies/[...id]/page.tsx",
+    ".next/types/app/layout.tsx"
   ],
   "exclude": ["node_modules"]
 }
