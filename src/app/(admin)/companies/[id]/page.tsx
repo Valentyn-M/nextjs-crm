@@ -1,6 +1,5 @@
 'use client';
 
-import Header from '@/app/components/header';
 import { notFound } from 'next/navigation';
 import React, { useEffect } from 'react';
 
@@ -18,7 +17,6 @@ export default function Page({ params }: PageProps) {
 
   return (
     <>
-      <Header>Companies ({params.id})</Header>
       <p>{new Date().toTimeString()}</p>
     </>
   );
