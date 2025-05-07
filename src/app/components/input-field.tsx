@@ -1,14 +1,19 @@
 'use client';
 
 import React from 'react';
-import { Field } from 'formik';
+import { Field, FieldAttributes } from 'formik';
 
-export interface InputFieldProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputFieldProps extends FieldAttributes<any> {
   label?: string;
+  as?: string; // дозволяє вказати "select", "textarea" і т.д.
 }
 
-export default function InputField({ label, id, ...rest }: InputFieldProps) {
+export default function InputField({
+  label,
+  id,
+  as = 'input',
+  ...rest
+}: InputFieldProps) {
   return (
     <div className="flex flex-col">
       {label && (
@@ -19,6 +24,7 @@ export default function InputField({ label, id, ...rest }: InputFieldProps) {
       <Field
         {...rest}
         id={id}
+        as={as} // ← ось тут використовується
         className="p-3 h-11 text-sm rounded border border-gray-300 shadow"
       />
     </div>

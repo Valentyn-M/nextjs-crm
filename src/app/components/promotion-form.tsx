@@ -40,22 +40,21 @@ export default function PromotionForm({
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: createPromotion,
-    onSuccess: (data) => {
-      queryClient.setQueryData(['promotions', companyId], (oldData) => {
-        if (oldData) {
-          return oldData.concat(data);
-        }
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['promotions', companyId],
       });
 
-      queryClient.setQueryData(['promotions'], (oldData) => {
-        if (oldData) {
-          return oldData.concat(data);
-        }
+      queryClient.invalidateQueries({
+        queryKey: ['promotions'],
+        exact: true,
       });
     },
   });
 
   const handleSubmit = async (values: PromotionFieldValues) => {
+    if (!company) return; // ← Додаємо перевірку
+
     await mutateAsync({
       ...values,
       discount: Number(values.discount) || 0,
@@ -71,7 +70,7 @@ export default function PromotionForm({
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <Form className="flex flex-col gap-10">
-        <h3 className="mb-0.5 font-semibold text-xl">Add new promotion</h3>
+        <p className="mb-0.5 text-xl">Add new promotion</p>
         <div className="flex flex-col gap-5">
           <InputField required label="Title" placeholder="Title" name="title" />
           <InputField

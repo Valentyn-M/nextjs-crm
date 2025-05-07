@@ -61,6 +61,8 @@ export default function CompanyForm({ onSubmit }: CompanyFormProps) {
   });
 
   const handleSubmit = async (values: CompanyFieldValues) => {
+    if (!categories || !countries) return; // додано захист
+
     await mutateAsync({
       ...values,
       categoryTitle:
