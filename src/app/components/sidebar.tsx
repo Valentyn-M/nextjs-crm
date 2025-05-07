@@ -20,7 +20,7 @@ export default function Sidebar({}: SidebarProps) {
         <Image
           className="py-8 mb-11 mx-auto"
           width={122}
-          height={25}
+          height={24}
           src="/icons/logo.svg"
           alt="logo"
         />

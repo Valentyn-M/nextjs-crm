@@ -1,12 +1,17 @@
 import MainLink from '@/app/components/main-link';
+import Image from 'next/image';
 
 export default function Home() {
   const currentYear = new Date().getFullYear();
 
   return (
     <div className="flex flex-col min-h-full">
-      <header className="bg-gray-900 text-white font-semibold text-xl min-h-18 px-4 py-4 flex items-center justify-center">
-        <div>CRM for Vendors</div>
+      <header className="bg-gray-900 text-white font-semibold text-lg min-h-18 px-4 py-4 flex items-center justify-center">
+        <div className="flex items-center gap-2">
+          <Image width={122} height={24} src="/icons/logo.svg" alt="logo" />
+          <span>|</span>
+          <span>CRM for Vendors</span>
+        </div>
       </header>
       <main className="grow-1 p-4 text-center">
         <h1 className="text-3xl font-semibold mb-3">Wellcome!</h1>
