@@ -5,6 +5,13 @@ import Providers from '@/app/components/providers';
 
 const font = Plus_Jakarta_Sans({ subsets: ['latin'] });
 
+export const metadata = {
+  title: 'TruScape CRM',
+  icons: {
+    icon: '/favicon.svg',
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
